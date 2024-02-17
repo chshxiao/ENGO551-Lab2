@@ -1,0 +1,14 @@
+{% extends "template.html" %}
+
+{% block title %}
+  Review Uploaded
+{% endblock %}
+
+{% block signout %}
+  <a href="{{ url_for('index')}}">Back to Sign in page</a>
+  <a href="{{ url_for('main_page')}}" class="offset-md-9">Back to Search page</a>
+{% endblock %}
+
+{% block heading %}
+  The review has been uploaded
+{% endblock %}

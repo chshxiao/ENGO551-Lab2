@@ -1,0 +1,52 @@
+{% extends "template.html" %}
+
+{% block title %}
+  Details Page
+{% endblock %}
+
+{% block signout %}
+  <a href="{{ url_for('logout')}}">Sign Out</a>
+  <a href="{{ url_for('main_page')}}" class="offset-md-10">Back to Search page</a>
+
+{% endblock %}
+
+{% block heading %}
+  Detail of <br>
+  {{ detail.title }}
+{% endblock %}
+
+{% block body %}
+  <div class="col-md-6 offset-md-3">
+    <div class="row">
+      <p>Title: {{ detail.title }}</p>
+    </div>
+    <div class="row">
+      <p>ISBN: {{ detail.isbn }}</p>
+    </div>
+    <div class="row">
+      <p>Author: {{ detail.name }}</p>
+    </div>
+    <div class="row">
+      <p>Publish Date: {{ published_date }}</p>
+    </div>
+    <div class="row">
+      <p>Average Rating: {{ api_detail.average_rating }}</p>
+    </div>
+    <h2>Reviews:</h2>
+    <ul>
+      {% for review in reviews %}
+        <li>{{ review.review }}</li>
+        <div class="row">
+          <div class="offset-md-10">
+            <p>-- {{ review.user_id }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </ul>
+  </div>
+  <br>
+
+  <div class="col-md-2 offset-md-5">
+    <a href="{{ url_for('write_review', isbn=detail.isbn) }}">Write a review</a>
+  </div>
+{% endblock %}

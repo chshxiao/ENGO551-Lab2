@@ -1,0 +1,45 @@
+{% extends "template.html" %}
+
+{% block title %}
+  Book Index
+{% endblock %}
+
+{% block signout %}
+  <a href="{{ url_for('logout')}}">Sign Out</a>
+{% endblock %}
+
+{% block heading %}
+  Write a review
+{% endblock %}
+
+{% block body %}
+  <form action="{{ url_for('upload_review', isbn=isbn) }}" method="post">
+    <div class="col-md-1 offset-md-4">
+      <div class="row">
+        <p>Rating:</p>
+      </div>
+      <div class="row">
+        <select name="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+    </div>
+      <br>
+    <div class="col-md-4 offset-md-4">
+      <div class="row">
+        <textarea type="text" name="review" placeholder="Enter your review here">
+        </textarea>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-2 offset-md-5">
+        <button class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+{% endblock %}
